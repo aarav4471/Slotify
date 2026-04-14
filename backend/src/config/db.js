@@ -10,7 +10,8 @@ try {
   const connectionUri = process.env.MYSQL_URL || process.env.DATABASE_URL;
 
   if (connectionUri) {
-    console.log(`Initializing pool with connection URI (${connectionUri.startsWith('mysql') ? 'mysql://' : 'unknown type'})...`);
+    const maskedUri = connectionUri.replace(/:([^:@]+)@/, ':****@');
+    console.log(`Initializing pool with connection URI: ${maskedUri}`);
     pool = mysql.createPool(connectionUri);
   } else {
     console.log('Initializing pool with individual environment variables...');

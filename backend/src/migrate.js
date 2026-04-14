@@ -3,8 +3,12 @@ const fs = require('fs');
 const path = require('path');
 
 async function migrate() {
-  const url = 'mysql://root:nqVTchHmDIHYgDNKCuCOsHoMMbBmUZBM@monorail.proxy.rlwy.net:33666/railway';
-  console.log('Connecting to Railway MySQL...');
+  const url = process.env.MYSQL_URL;
+  if (!url) {
+    console.error('Error: MYSQL_URL environment variable is not set.');
+    process.exit(1);
+  }
+  console.log('Connecting to MySQL...');
   
   try {
     const connection = await mysql.createConnection(url);
