@@ -1,5 +1,4 @@
-CREATE DATABASE IF NOT EXISTS scheduler_app;
-USE scheduler_app;
+-- Slotify Database Schema
 
 CREATE TABLE users (
   id INT AUTO_INCREMENT PRIMARY KEY,
