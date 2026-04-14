@@ -20,7 +20,8 @@ async function startServer() {
       connection.release();
       break; // Success!
     } catch (error) {
-      console.error('Database connection failed:', error.message);
+      console.error('Database connection failed:');
+      console.error(error);
       retries -= 1;
       if (retries === 0) {
         console.error('Final attempt failed. Exiting.');
